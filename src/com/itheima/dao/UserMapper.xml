@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.itheima.po.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="uemail" jdbcType="VARCHAR" property="uemail" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="upassword" jdbcType="VARCHAR" property="upassword" />
+    <result column="uquestion" jdbcType="VARCHAR" property="uquestion" />
+    <result column="uanswer" jdbcType="VARCHAR" property="uanswer" />
+    <result column="ubirthday" jdbcType="INTEGER" property="ubirthday" />
+    <result column="res" jdbcType="VARCHAR" property="res" />
+    <result column="res2" jdbcType="VARCHAR" property="res2" />
+    <result column="res3" jdbcType="VARCHAR" property="res3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, uemail, uname, upassword, uquestion, uanswer, ubirthday, res, res2, res3
+  </sql>
+
+  <select id="selectByUname" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where uname = #{uname,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUemail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where uemail = #{uemail,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectPassworByUname" parameterType="com.itheima.po.User" resultMap="BaseResultMap">
+    select Upassword
+    from user
+    where uname = #{uname,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.po.User">
+    insert into user (userid, uemail, uname, 
+      upassword, uquestion, uanswer, 
+      ubirthday, res, res2, 
+      res3)
+    values (#{userid,jdbcType=INTEGER}, #{uemail,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, 
+      #{upassword,jdbcType=VARCHAR}, #{uquestion,jdbcType=VARCHAR}, #{uanswer,jdbcType=VARCHAR}, 
+      #{ubirthday,jdbcType=INTEGER}, #{res,jdbcType=VARCHAR}, #{res2,jdbcType=VARCHAR}, 
+      #{res3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.po.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="uemail != null">
+        uemail,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="upassword != null">
+        upassword,
+      </if>
+      <if test="uquestion != null">
+        uquestion,
+      </if>
+      <if test="uanswer != null">
+        uanswer,
+      </if>
+      <if test="ubirthday != null">
+        ubirthday,
+      </if>
+      <if test="res != null">
+        res,
+      </if>
+      <if test="res2 != null">
+        res2,
+      </if>
+      <if test="res3 != null">
+        res3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="uemail != null">
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uquestion != null">
+        #{uquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="uanswer != null">
+        #{uanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        #{ubirthday,jdbcType=INTEGER},
+      </if>
+      <if test="res != null">
+        #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        #{res3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.po.User">
+    update user
+    <set>
+      <if test="uemail != null">
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uquestion != null">
+        uquestion = #{uquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="uanswer != null">
+        uanswer = #{uanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        ubirthday = #{ubirthday,jdbcType=INTEGER},
+      </if>
+      <if test="res != null">
+        res = #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        res2 = #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        res3 = #{res3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.po.User">
+    update user
+    set uemail = #{uemail,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      upassword = #{upassword,jdbcType=VARCHAR},
+      uquestion = #{uquestion,jdbcType=VARCHAR},
+      uanswer = #{uanswer,jdbcType=VARCHAR},
+      ubirthday = #{ubirthday,jdbcType=INTEGER},
+      res = #{res,jdbcType=VARCHAR},
+      res2 = #{res2,jdbcType=VARCHAR},
+      res3 = #{res3,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

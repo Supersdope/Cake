@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.BabyMapper">
+  <resultMap id="BaseResultMap" type="com.itheima.po.Baby">
+    <id column="babyid" jdbcType="INTEGER" property="babyid" />
+    <result column="exphoto" jdbcType="VARCHAR" property="exphoto" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="ex" jdbcType="VARCHAR" property="ex" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="bclass" jdbcType="VARCHAR" property="bclass" />
+    <result column="sclass" jdbcType="VARCHAR" property="sclass" />
+    <result column="cclass" jdbcType="VARCHAR" property="cclass" />
+    <result column="mphoto" jdbcType="VARCHAR" property="mphoto" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="exp" jdbcType="VARCHAR" property="exp" />
+    <result column="hephoto" jdbcType="VARCHAR" property="hephoto" />
+    <result column="extext" jdbcType="VARCHAR" property="extext" />
+  </resultMap>
+  <resultMap id="BabyAndBabysize" type="com.itheima.po.Baby">
+    <id column="babyid" jdbcType="INTEGER" property="babyid" />
+    <result column="exphoto" jdbcType="VARCHAR" property="exphoto" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="ex" jdbcType="VARCHAR" property="ex" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="bclass" jdbcType="VARCHAR" property="bclass" />
+    <result column="sclass" jdbcType="VARCHAR" property="sclass" />
+    <result column="cclass" jdbcType="VARCHAR" property="cclass" />
+    <result column="mphoto" jdbcType="VARCHAR" property="mphoto" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="exp" jdbcType="VARCHAR" property="exp" />
+    <result column="hephoto" jdbcType="VARCHAR" property="hephoto" />
+    <result column="extext" jdbcType="VARCHAR" property="extext" />
+    <collection property="babysize" ofType="com.itheima.po.Babysize">
+      <result column="sid" property="sid" />
+      <result column="pound" property="pound" />
+      <result column="sphoto" property="sphoto" />
+      <result column="size" property="size" />
+      <result column="mpople" property="mpople" />
+      <result column="mtableware" property="mtableware" />
+      <result column="time" property="time" />
+      <result column="price" property="price" />
+      <result column="sbid" property="sbid" />
+      <result column="res1" property="res1" />
+      <result column="res2" property="res2" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    babyid, exphoto, title, ex, grade, bclass, sclass, cclass, mphoto, sign, exp, bsid, hephoto,
+    extext
+  </sql>
+  <select id="selectBabyBybclass" parameterType="com.itheima.po.Combine" resultMap="BabyAndBabysize">
+    select *
+    from baby b, babysize s
+    where b.bsid = s.sbid
+    and b.bclass = #{baby.bclass}
+    and s.pound = 2.0
+    ORDER BY babyid LIMIT #{page.count}
+  </select>
+
+  <select id="selectBabyBySclassAndCclass" parameterType="com.itheima.po.Combine" resultMap="BabyAndBabysize">
+    select *
+    from baby b, babysize s
+    where b.bsid = s.sbid
+    <if test="baby.sclass!=null and baby.sclass!=''">
+      and b.sclass like '%${baby.sclass}%'
+    </if>
+    <if test="baby.cclass!=null and baby.cclass!=''">
+      and b.cclass like '%${baby.cclass}%'
+    </if>
+    and s.pound = 2.0
+    ORDER BY babyid LIMIT #{page.cpage}, #{page.count}
+  </select>
+
+  <select id="selectBabyByMany" parameterType="com.itheima.po.Baby" resultMap="BabyAndBabysize">
+    select *
+    from baby, babysize
+    where baby.bsid = babysize.sbid
+      <if test="babyid!=null and babyid!=''">
+        and babyid = #{babyid}
+      </if>
+      <if test="title!=null and title!=''">
+        and baby.title like '%${title}%'
+      </if>
+      <if test="sclass!=null and sclass!=''">
+        and sclass like '%${sclass}%'
+      </if>
+      <if test="cclass!=null and cclass!=''">
+        and cclass like '%${cclass}%'
+      </if>
+    and babysize.pound = 2.0
+    ORDER BY babyid DESC
+  </select>
+
+  <delete id="deleteBabyByBabyid" parameterType="java.lang.Integer">
+    delete from baby
+    where babyid = #{babyid,jdbcType=INTEGER}
+  </delete>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BabyAndBabysize">
+    select *
+    from baby b, babysize s
+    where b.bsid = s.sbid
+    and babyid = #{babyid,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from baby
+    where babyid = #{babyid,jdbcType=INTEGER}
+  </delete>
+
+
+  <insert id="insert" parameterType="com.itheima.po.Baby">
+    insert into baby (babyid, exphoto, title, 
+      ex, grade, bclass, 
+      sclass, mphoto, sign, 
+      exp, res, res2,
+      extext)
+    values (#{babyid,jdbcType=INTEGER}, #{exphoto,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{ex,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{bclass,jdbcType=VARCHAR}, 
+      #{sclass,jdbcType=VARCHAR}, #{mphoto,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{exp,jdbcType=VARCHAR}, #{res,jdbcType=VARCHAR}, #{res2,jdbcType=VARCHAR},
+      #{res3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.po.Baby">
+    insert into baby
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="babyid != null">
+        babyid,
+      </if>
+      <if test="exphoto != null">
+        exphoto,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="ex != null">
+        ex,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="bclass != null">
+        bclass,
+      </if>
+      <if test="sclass != null">
+        sclass,
+      </if>
+      <if test="mphoto != null">
+        mphoto,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="exp != null">
+        exp,
+      </if>
+      <if test="res != null">
+        res,
+      </if>
+      <if test="res2 != null">
+        res2,
+      </if>
+      <if test="res3 != null">
+        res3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="babyid != null">
+        #{babyid,jdbcType=INTEGER},
+      </if>
+      <if test="exphoto != null">
+        #{exphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="ex != null">
+        #{ex,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="bclass != null">
+        #{bclass,jdbcType=VARCHAR},
+      </if>
+      <if test="sclass != null">
+        #{sclass,jdbcType=VARCHAR},
+      </if>
+      <if test="mphoto != null">
+        #{mphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        #{exp,jdbcType=VARCHAR},
+      </if>
+      <if test="res != null">
+        #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        #{res3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.po.Baby">
+    update baby
+    <set>
+      <if test="exphoto != null">
+        exphoto = #{exphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="ex != null">
+        ex = #{ex,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="bclass != null">
+        bclass = #{bclass,jdbcType=VARCHAR},
+      </if>
+      <if test="sclass != null">
+        sclass = #{sclass,jdbcType=VARCHAR},
+      </if>
+      <if test="mphoto != null">
+        mphoto = #{mphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="exp != null">
+        exp = #{exp,jdbcType=VARCHAR},
+      </if>
+      <if test="res != null">
+        res = #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        res2 = #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        res3 = #{res3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where babyid = #{babyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.po.Baby">
+    update baby
+    set exphoto = #{exphoto,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      ex = #{ex,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      bclass = #{bclass,jdbcType=VARCHAR},
+      sclass = #{sclass,jdbcType=VARCHAR},
+      mphoto = #{mphoto,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      exp = #{exp,jdbcType=VARCHAR},
+      res = #{res,jdbcType=VARCHAR},
+      res2 = #{res2,jdbcType=VARCHAR},
+      res3 = #{res3,jdbcType=VARCHAR}
+    where babyid = #{babyid,jdbcType=INTEGER}
+  </update>
+</mapper>

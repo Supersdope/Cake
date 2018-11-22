@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.GorderMapper">
+  <resultMap id="BaseResultMap" type="com.itheima.po.Gorder">
+    <id column="orderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="otime" jdbcType="VARCHAR" property="otime" />
+    <result column="opattern" jdbcType="VARCHAR" property="opattern" />
+    <result column="ostate" jdbcType="VARCHAR" property="ostate" />
+    <result column="oprice" jdbcType="DOUBLE" property="oprice" />
+    <result column="obid" jdbcType="VARCHAR" property="obid" />
+    <result column="ouid" jdbcType="VARCHAR" property="ouid" />
+    <result column="res" jdbcType="VARCHAR" property="res" />
+    <result column="res2" jdbcType="VARCHAR" property="res2" />
+    <result column="res3" jdbcType="VARCHAR" property="res3" />
+  </resultMap>
+
+  <resultMap id="GorderAndBaby" type="com.itheima.po.Gorder">
+    <id column="orderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="otime" jdbcType="VARCHAR" property="otime" />
+    <result column="opattern" jdbcType="VARCHAR" property="opattern" />
+    <result column="ostate" jdbcType="VARCHAR" property="ostate" />
+    <result column="oprice" jdbcType="DOUBLE" property="oprice" />
+    <result column="obid" jdbcType="VARCHAR" property="obid" />
+    <result column="ouid" jdbcType="VARCHAR" property="ouid" />
+    <result column="res" jdbcType="VARCHAR" property="res" />
+    <result column="res2" jdbcType="VARCHAR" property="res2" />
+    <result column="res3" jdbcType="VARCHAR" property="res3" />
+    <collection property="baby" ofType="com.itheima.po.Baby">
+      <result column="exphoto" property="exphoto" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderId, otime, opattern, ostate, oprice, obid, ouid, res, res2, res3
+  </sql>
+
+  <insert id="insertGorder" parameterType="com.itheima.po.Gorder">
+    insert into gorder(orderid, otime, opattern, ostate, oprice, obid,  ouid)
+    values (#{orderid}, #{otime}, #{opattern}, #{ostate}, #{oprice}, #{obid}, #{ouid})
+  </insert>
+
+  <select id="selectGorderByOstate" parameterType="com.itheima.po.Gorder" resultMap="GorderAndBaby">
+    select *
+    from gorder g, baby b
+    where g.obid = b.bsid
+    <if test="ostate!=null and ostate!=''">
+      and g.ostate = #{ostate}
+    </if>
+    and g.ouid = #{ouid}
+    order by otime desc
+  </select>
+
+  <update id="UpdataOstateByOrderid" parameterType="com.itheima.po.Gorder">
+    update gorder
+    set ostate = #{ostate}
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gorder
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from gorder
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.po.Gorder">
+    insert into gorder (orderId, otime, opattern, 
+      ostate, oprice, obid, 
+      ouid, res, res2, res3
+      )
+    values (#{orderid,jdbcType=VARCHAR}, #{otime,jdbcType=VARCHAR}, #{opattern,jdbcType=VARCHAR}, 
+      #{ostate,jdbcType=VARCHAR}, #{oprice,jdbcType=DOUBLE}, #{obid,jdbcType=VARCHAR}, 
+      #{ouid,jdbcType=VARCHAR}, #{res,jdbcType=VARCHAR}, #{res2,jdbcType=VARCHAR}, #{res3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.po.Gorder">
+    insert into gorder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="otime != null">
+        otime,
+      </if>
+      <if test="opattern != null">
+        opattern,
+      </if>
+      <if test="ostate != null">
+        ostate,
+      </if>
+      <if test="oprice != null">
+        oprice,
+      </if>
+      <if test="obid != null">
+        obid,
+      </if>
+      <if test="ouid != null">
+        ouid,
+      </if>
+      <if test="res != null">
+        res,
+      </if>
+      <if test="res2 != null">
+        res2,
+      </if>
+      <if test="res3 != null">
+        res3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="otime != null">
+        #{otime,jdbcType=VARCHAR},
+      </if>
+      <if test="opattern != null">
+        #{opattern,jdbcType=VARCHAR},
+      </if>
+      <if test="ostate != null">
+        #{ostate,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null">
+        #{oprice,jdbcType=DOUBLE},
+      </if>
+      <if test="obid != null">
+        #{obid,jdbcType=VARCHAR},
+      </if>
+      <if test="ouid != null">
+        #{ouid,jdbcType=VARCHAR},
+      </if>
+      <if test="res != null">
+        #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        #{res3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.po.Gorder">
+    update gorder
+    <set>
+      <if test="otime != null">
+        otime = #{otime,jdbcType=VARCHAR},
+      </if>
+      <if test="opattern != null">
+        opattern = #{opattern,jdbcType=VARCHAR},
+      </if>
+      <if test="ostate != null">
+        ostate = #{ostate,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null">
+        oprice = #{oprice,jdbcType=DOUBLE},
+      </if>
+      <if test="obid != null">
+        obid = #{obid,jdbcType=VARCHAR},
+      </if>
+      <if test="ouid != null">
+        ouid = #{ouid,jdbcType=VARCHAR},
+      </if>
+      <if test="res != null">
+        res = #{res,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        res2 = #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null">
+        res3 = #{res3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.po.Gorder">
+    update gorder
+    set otime = #{otime,jdbcType=VARCHAR},
+      opattern = #{opattern,jdbcType=VARCHAR},
+      ostate = #{ostate,jdbcType=VARCHAR},
+      oprice = #{oprice,jdbcType=DOUBLE},
+      obid = #{obid,jdbcType=VARCHAR},
+      ouid = #{ouid,jdbcType=VARCHAR},
+      res = #{res,jdbcType=VARCHAR},
+      res2 = #{res2,jdbcType=VARCHAR},
+      res3 = #{res3,jdbcType=VARCHAR}
+    where orderId = #{orderid,jdbcType=VARCHAR}
+  </update>
+</mapper>

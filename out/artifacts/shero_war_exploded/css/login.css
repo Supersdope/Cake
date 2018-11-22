@@ -1,0 +1,178 @@
+body{
+    font-family: 'PingFang SC','Heiti SC','微软雅黑',Helvetica,Arial;
+    font-size: 14px;
+    color: #684029;
+}
+
+/*导航栏*/
+.navbar{
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(195,195,195,0.50);
+}
+
+.navbar-nav li{
+    padding: 10px 0;
+}
+
+.navbar-nav li a{
+    color: #333;
+}
+
+.navbar-nav li a:hover, .logout:hover{
+    background-color: #ffffff;
+    color: #D5BFA7;;
+}
+.welcomeLi{
+    color: #333;
+    margin-top: 14px;
+    margin-right: 30px;
+}
+.welcomeSpan{
+    color: #bc1d1d;
+}
+.logout{
+    cursor: pointer;
+    font-size: 12px;
+}
+.badge{
+    padding: 2px 4px;
+    font-size: 10px;
+    background-color: red;
+    position: relative;
+    bottom: 6px;
+    right: 4px;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #BFBFBF;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #BFBFBF;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #BFBFBF;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #BFBFBF;
+}
+.login-background{
+    background: url("../images/login/bg.jpg") no-repeat top;
+    height: 740px;
+}
+.main-content{
+    position: absolute;
+    width: 382px;
+    height: 400px;
+    top: 130px;
+    right: 200px;
+    padding: 28px 42px;
+    border: 1px #E9E9E9 solid;
+    background: #fff;
+}
+.main-content div{
+    height: 60px;
+}
+.main-content h4{
+    text-align: center;
+}
+.main-content input{
+    width: 280px;
+    padding: 0 5px;
+    height: 36px;
+    border: 1px solid #efefef;
+    border-radius: 2px;
+    outline: none;
+    color: #442818;
+    line-height: 38px;
+    margin-top: 10px;
+}
+.code{
+    height: 52px !important;
+}
+#mpanel{
+    margin-top: 10px;
+    height: 43px;
+}
+.error-text{
+    background: url("../images/rigister/fail.png") no-repeat left;
+    background-size: 18px;
+    padding-left: 20px;
+    color: #FF714D;
+    font-weight: 700;
+    display: none;
+}
+.valid {
+    background:url(../images/rigister/succ.png) no-repeat right !important;
+}
+.main-content .error:last-child{
+    background:url(../images/rigister/fail.png) no-repeat left;
+    background-size: 18px;
+    padding-left: 20px;
+    padding-top: 2px;
+    color: #FF714D;
+}
+.login-btn{
+    display: block;
+    background: #442818;
+    border-radius: 2px;
+    height: 48px !important;
+    width: 302px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff !important;
+    border: 0;
+    cursor: pointer;
+}
+
+
+/*footer*/
+.footer-content{
+    background-color: #333;
+    padding-top: 5%;
+    text-align: center;
+}
+.footer-ul{
+    list-style: none;
+}
+.footer-ul li{
+    display: inline;
+    color: #fff;
+    padding: 0 2%;
+}
+.footer-ul li a{
+    color: #fff;
+}
+.footer-ul li a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.footer-content p{
+    color: #9a9a9a;
+    font-size: 12px;
+}
+.footer-photo{
+    margin: 2% 0;
+}
+.footer-photo a{
+    display: inline-block;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background: #494949;
+    margin: 0 25px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.footer-photo a:hover{
+    text-decoration: none;
+}
+.footer-photo a img{
+    height: 30px;
+    margin: 10px;
+}

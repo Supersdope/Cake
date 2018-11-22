@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.CartMapper">
+  <resultMap id="BaseResultMap" type="com.itheima.po.Cart">
+    <id column="cartid" jdbcType="INTEGER" property="cartid" />
+    <result column="cbid" jdbcType="VARCHAR" property="cbid" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="ex" jdbcType="VARCHAR" property="ex" />
+    <result column="cpound" jdbcType="VARCHAR" property="cpound" />
+    <result column="ctable" jdbcType="VARCHAR" property="ctable" />
+    <result column="cprice" jdbcType="VARCHAR" property="cprice" />
+    <result column="birthcard" jdbcType="VARCHAR" property="birthcard" />
+    <result column="cuid" jdbcType="VARCHAR" property="cuid" />
+    <result column="res3" jdbcType="VARCHAR" property="res3" />
+  </resultMap>
+  <resultMap id="CartAndBaby" type="com.itheima.po.Cart">
+    <id column="cartid" jdbcType="INTEGER" property="cartid" />
+    <result column="cbid" jdbcType="VARCHAR" property="cbid" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="ex" jdbcType="VARCHAR" property="ex" />
+    <result column="cpound" jdbcType="VARCHAR" property="cpound" />
+    <result column="ctable" jdbcType="VARCHAR" property="ctable" />
+    <result column="cprice" jdbcType="VARCHAR" property="cprice" />
+    <result column="birthcard" jdbcType="VARCHAR" property="birthcard" />
+    <result column="cuid" jdbcType="VARCHAR" property="cuid" />
+    <result column="res3" jdbcType="VARCHAR" property="res3" />
+    <collection property="baby" ofType="com.itheima.po.Baby">
+      <result column="babyid" property="babyid" />
+      <result column="exphoto" property="exphoto" />
+      <result column="title" property="title" />
+    </collection>
+  </resultMap>
+
+  <sql id="cartBase">
+    cartid, cbid, num, cpound, ctable, cprice, birthcard, cuid, res3
+  </sql>
+
+  <insert id="insertToCart" parameterType="com.itheima.po.Cart">
+    insert into cart (cbid, cpound, ctable, cprice, cuid)
+    value (#{cbid}, #{cpound}, #{ctable}, #{cprice}, #{cuid})
+  </insert>
+
+  <select id="selectByCart" parameterType="com.itheima.po.Cart" resultMap="BaseResultMap">
+    select * from cart where cbid = #{cbid} and cpound = #{cpound} and cuid = #{cuid}
+  </select>
+
+  <update id="updatanum" parameterType="com.itheima.po.Cart">
+    update cart set num = #{num} where cbid = #{cbid}
+  </update>
+
+  <select id="selectCartByCuid" parameterType="String" resultMap="CartAndBaby">
+    select
+     <include refid="cartBase"></include>, b.exphoto, b.title, b.babyid
+    from cart c, baby b where c.cbid = b.babyid and c.cuid = #{cuid}
+  </select>
+
+  <delete id="deletCartByCartid" parameterType="Integer">
+    delete from cart where cartid = #{cartid}
+  </delete>
+
+  <delete id="deleteAllCart">
+    delete from cart
+  </delete>
+
+  <update id="UpdataCardByCartid" parameterType="com.itheima.po.Cart">
+    update cart set birthcard = #{birthcard} where cartid = #{cartid}
+  </update>
+
+  <select id="selectAllCartByCuid" parameterType="String" resultMap="BaseResultMap">
+    select *
+    from cart where cuid = #{cuid}
+  </select>
+
+  <delete id="deleteCartByCuid" parameterType="String">
+    delete from cart where cuid = #{cuid}
+  </delete>
+</mapper>

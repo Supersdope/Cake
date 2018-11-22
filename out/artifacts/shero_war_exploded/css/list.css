@@ -1,0 +1,47 @@
+body{
+    font-family: tahoma, arial, "Hiragino Sans GB", "宋体", sans-serif;
+}
+
+.content-title{
+    background-color: #F5F5F5;
+    padding: 1% 0;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 1%;
+}
+
+.content-title .col-lg-5{
+    text-align: center;
+}
+
+.content-one{
+    background-color: #F5F5F5;
+    padding: 1% 0;
+    border: 1px solid #d1d1d1;
+    margin-top: 1%;
+}
+
+.content-two{
+    padding: 1% 0;
+    border: 1px solid #d1d1d1;
+    border-top: none;
+}
+.content-two div a{
+    color: #3c3c3c;
+    text-decoration: none;
+}
+.content-two div a:hover{
+    color: #FF4401;
+}
+.two-ope{
+    border: 1px solid #d1d1d1;
+    border-radius: 10%;
+    text-align: center;
+    padding: 3% 0;
+}
+.two-ope:hover{
+    border: 1px solid #FF4401;
+}
+
+.nav-tabs{
+    border: none;
+}

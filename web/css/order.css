@@ -1,0 +1,145 @@
+body{
+    font-family: 'PingFang SC','Heiti SC','微软雅黑',Helvetica,Arial;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #684029;
+    background-color: #fff;
+}
+
+
+.navbar{
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(195,195,195,0.50);
+}
+
+.navbar-nav li{
+    padding: 10px 0;
+}
+
+.navbar-nav li a{
+    color: #333;
+}
+
+.navbar-nav li a:hover{
+    background-color: #ffffff;
+    color: #D5BFA7;;
+}
+.welcomeLi{
+    color: #333;
+    margin-top: 14px;
+    margin-right: 30px;
+}
+.welcomeSpan{
+    color: #bc1d1d;
+}
+.logout{
+    cursor: pointer;
+    font-size: 12px;
+}
+.badge{
+    padding: 2px 4px;
+    font-size: 10px;
+    background-color: red;
+    position: relative;
+    bottom: 6px;
+    right: 4px;
+}
+
+/*main-content*/
+.content-title ul{
+    list-style: none;
+    padding-left: 10px;
+}
+.content-title ul li{
+    float: left;
+    color: #D5BFA7;
+    cursor: pointer;
+    border-left: 2px solid #EFEFEF;
+    padding: 0 40px;
+}
+.main-content {
+    padding: 20px 20px;
+}
+
+.order-title{
+    background: #FAFAFA;
+    border: 1px solid #E1E1E1;
+    height: 44px;
+    line-height: 44px;
+    overflow: hidden;
+    padding-left: 40px;
+}
+.order-product{
+    height: 130px;
+    padding: 28px 0;
+    background: #fff;
+    border: 1px solid #E1E1E1;
+    border-top: none;
+    margin-bottom: 20px;
+}
+.order-product div{
+    line-height: 70px;
+    text-align: center;
+}
+.order-product img{
+    max-width: 100px;
+    max-height: 100px;
+    cursor: pointer;
+}
+.pay, .shou{
+    color: #D5BFA7;
+    cursor: pointer;
+}
+.pay:hover, .shou:hover{
+    color: #684029;
+}
+
+/*footer*/
+.footer-content{
+    background-color: #333;
+    margin-top: 5%;
+    padding-top: 5%;
+    text-align: center;
+}
+.footer-ul{
+    list-style: none;
+}
+.footer-ul li{
+    display: inline;
+    color: #fff;
+    padding: 0 2%;
+}
+.footer-ul li a{
+    color: #fff;
+}
+.footer-ul li a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.footer-content p{
+    color: #9a9a9a;
+    font-size: 12px;
+}
+.footer-photo{
+    margin: 2% 0;
+}
+.footer-photo a{
+    display: inline-block;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background: #494949;
+    margin: 0 25px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.footer-photo a:hover{
+    text-decoration: none;
+}
+.footer-photo a img{
+    height: 30px;
+    margin: 10px;
+}

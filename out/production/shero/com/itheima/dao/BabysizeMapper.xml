@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.BabysizeMapper">
+  <resultMap id="BaseResultMap" type="com.itheima.po.Babysize">
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="pound" jdbcType="VARCHAR" property="pound" />
+    <result column="sphoto" jdbcType="VARCHAR" property="sphoto" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="mpople" jdbcType="VARCHAR" property="mpople" />
+    <result column="mtableware" jdbcType="VARCHAR" property="mtableware" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="sbid" jdbcType="VARCHAR" property="sbid" />
+    <result column="res1" jdbcType="VARCHAR" property="res1" />
+    <result column="res2" jdbcType="VARCHAR" property="res2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sid, pound, sphoto, size, mpople, mtableware, time, price, sbid, res1, res2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from babysize
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from babysize
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.po.Babysize">
+    insert into babysize (sid, pound, sphoto, 
+      size, mpople, mtableware, 
+      time, price, sbid, 
+      res1, res2)
+    values (#{sid,jdbcType=INTEGER}, #{pound,jdbcType=VARCHAR}, #{sphoto,jdbcType=VARCHAR}, 
+      #{size,jdbcType=VARCHAR}, #{mpople,jdbcType=VARCHAR}, #{mtableware,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{sbid,jdbcType=VARCHAR}, 
+      #{res1,jdbcType=VARCHAR}, #{res2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.po.Babysize">
+    insert into babysize
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="pound != null">
+        pound,
+      </if>
+      <if test="sphoto != null">
+        sphoto,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="mpople != null">
+        mpople,
+      </if>
+      <if test="mtableware != null">
+        mtableware,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="sbid != null">
+        sbid,
+      </if>
+      <if test="res1 != null">
+        res1,
+      </if>
+      <if test="res2 != null">
+        res2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="pound != null">
+        #{pound,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoto != null">
+        #{sphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="mpople != null">
+        #{mpople,jdbcType=VARCHAR},
+      </if>
+      <if test="mtableware != null">
+        #{mtableware,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="sbid != null">
+        #{sbid,jdbcType=VARCHAR},
+      </if>
+      <if test="res1 != null">
+        #{res1,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        #{res2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.po.Babysize">
+    update babysize
+    <set>
+      <if test="pound != null">
+        pound = #{pound,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoto != null">
+        sphoto = #{sphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="mpople != null">
+        mpople = #{mpople,jdbcType=VARCHAR},
+      </if>
+      <if test="mtableware != null">
+        mtableware = #{mtableware,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="sbid != null">
+        sbid = #{sbid,jdbcType=VARCHAR},
+      </if>
+      <if test="res1 != null">
+        res1 = #{res1,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null">
+        res2 = #{res2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.po.Babysize">
+    update babysize
+    set pound = #{pound,jdbcType=VARCHAR},
+      sphoto = #{sphoto,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      mpople = #{mpople,jdbcType=VARCHAR},
+      mtableware = #{mtableware,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      sbid = #{sbid,jdbcType=VARCHAR},
+      res1 = #{res1,jdbcType=VARCHAR},
+      res2 = #{res2,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,261 @@
+body{
+    font-family: 'PingFang SC','Heiti SC','微软雅黑',Helvetica,Arial;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.navbar{
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(195,195,195,0.50);
+}
+
+.navbar-nav li{
+    padding: 10px 0;
+}
+
+.navbar-nav li a{
+    color: #333;
+}
+
+.navbar-nav li a:hover{
+    background-color: #ffffff;
+    color: #D5BFA7;;
+}
+.welcomeLi{
+    color: #333;
+    margin-top: 14px;
+    margin-right: 30px;
+}
+.welcomeSpan{
+    color: #bc1d1d;
+}
+.logout{
+    cursor: pointer;
+    font-size: 12px;
+}
+.badge{
+    padding: 2px 4px;
+    font-size: 10px;
+    background-color: red;
+    position: relative;
+    bottom: 6px;
+    right: 4px;
+}
+
+/*展示图片*/
+.row-photo{
+    margin-top: 8%;
+}
+
+.row-photo .col-lg-1 div{
+    margin-bottom: 18.2px;
+}
+
+.row-photo .col-lg-1 img{
+    width: 90px;
+}
+
+/*宝贝信息*/
+.baby-title{
+    font-size: 20px;
+    line-height: 28px;
+    color: #684029;
+}
+
+.baby-sign{
+    margin-top: 20px;
+}
+.baby-sign a{
+    font-size: 12px;
+    color: #D5BFA7;
+    border: 1px solid #D5BFA7;
+    border-radius: 10px;
+    padding: 0 3%;
+    cursor: pointer;
+    margin-right: 2%;
+}
+.baby-sign a:hover{
+    color: #D5BFA7;
+    text-decoration: none;
+}
+.baby-exp{
+    margin: 30px 0;
+    color: #684029;
+}
+.baby-exp img{
+    width: 50px;
+}
+.baby-text{
+    line-height: 25px;
+    color: #684029;
+}
+.baby-bt, .baby-grade{
+    margin-top: 20px;
+    color: #684029;
+    font-size: 14px;
+}
+.baby-bt img, .baby-grade img{
+    width: 30px;
+}
+.baby-info{
+    padding-left: 50px;
+}
+.sphoto{
+    float: left;
+    width: 300px;
+    height: 170px;
+}
+.sinfo{
+    float: left;
+    padding-top: 3px;
+    padding-left: 30px;
+}
+.sinfo div{
+    margin-bottom: 5px;
+    color: #684029;
+}
+.sinfo img{
+    width: 30px;
+}
+.baby-price{
+    font-size: 26px;
+    color: #C69C6D;
+    margin-left: 6px;
+}
+.baby-size{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.baby-size span{
+    padding: 5px 15px;
+    border: 1px solid #e7e0dd;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.baby-size span:hover, .baby-hg img:hover{
+    cursor: pointer;
+    border-color: #D5BFA7;
+    color: #D5BFA7;
+}
+.baby-hg{
+    color: #684029;
+    margin-bottom: 20px;
+}
+.baby-hg img{
+    width: 40px;
+    padding: 5px;
+    border: 1px solid #e7e0dd;
+    margin-left: 10px;
+}
+.hg-text{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.baby-btn span:first-child{
+    padding: 5px 50px;
+    background-color: #F4F4F4;
+    color: #7A5844;
+    margin-right: 10px;
+}
+.baby-btn span:first-child:hover{
+    cursor: pointer;
+    background-color: #e1e1e1;
+}
+.baby-btn span:last-child{
+    padding: 5px 50px;
+    background-color: #684029;
+    color: #fff;
+}
+.baby-btn span:last-child:hover{
+    cursor: pointer;
+    background-color: #3d2517;
+}
+.cart-success{
+    position: absolute;
+    width: 238px;
+    height: 124px;
+    bottom: 54px;
+    left: 206px;
+    text-align: center;
+    padding: 20px 30px;
+    background-color: rgba(104,64,41,0.7);
+    z-index: 10000;
+}
+.cart-success p{
+    color: #fff;
+    margin-top: 8px;
+}
+.cart-success a{
+    color: #684029;
+    font-size: 12px;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    background: #fff;
+    display: block;
+    height: 34px;
+    width: 160px;
+    line-height: 34px;
+    text-align: center;
+    margin: 15px auto 0;
+}
+.cart-success a:hover{
+    color: #D5BFA7;
+}
+.main-photo img{
+    width: 100%;
+}
+
+/*footer*/
+.footer-content{
+    background-color: #333;
+    margin-top: 5%;
+    padding-top: 5%;
+    text-align: center;
+}
+.footer-ul{
+    list-style: none;
+}
+.footer-ul li{
+    display: inline;
+    color: #fff;
+    padding: 0 2%;
+}
+.footer-ul li a{
+    color: #fff;
+}
+.footer-ul li a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.footer-content p{
+    color: #9a9a9a;
+    font-size: 12px;
+}
+.footer-photo{
+    margin: 2% 0;
+}
+.footer-photo a{
+    display: inline-block;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background: #494949;
+    margin: 0 25px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.footer-photo a:hover{
+    text-decoration: none;
+}
+.footer-photo a img{
+    height: 30px;
+    margin: 10px;
+}
